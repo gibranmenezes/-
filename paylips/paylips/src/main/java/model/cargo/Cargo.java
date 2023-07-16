@@ -3,14 +3,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "cargos")
+@Entity
 @Table(name = "CARGO")
 public class Cargo implements Serializable{
 
@@ -26,6 +26,5 @@ public class Cargo implements Serializable{
     @Column(name = "salario", length = 12, precision = 4)
     private BigDecimal salario;
 
-    public Cargo(int id, String cargoNome, BigDecimal salario) {
-    }
+
 }

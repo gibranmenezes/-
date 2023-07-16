@@ -1,16 +1,16 @@
 package repositories;
 
+import jakarta.persistence.EntityManager;
+import lombok.NoArgsConstructor;
 import model.cidade.Cidade;
-import model.pais.Pais;
-import model.pessoa.Pessoa;
 import utils.Transacional;
 
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import java.util.List;
+import jakarta.inject.Inject;
 import java.util.Optional;
 
+@NoArgsConstructor
 public class CidadeRepository extends GenericRepository<Cidade>{
+
 
     @Inject
     private EntityManager entityManager;

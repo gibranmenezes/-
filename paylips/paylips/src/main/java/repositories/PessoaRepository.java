@@ -1,21 +1,19 @@
 package repositories;
 
-import model.contato.Contato;
+import jakarta.inject.Inject;
+import jakarta.persistence.EntityManager;
+import lombok.NoArgsConstructor;
 import model.pessoa.Pessoa;
 import utils.Transacional;
 
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
 import java.util.List;
 
-public class PessoaRespository extends GenericRepository<Pessoa> {
-
-
+@NoArgsConstructor
+public class PessoaRepository extends GenericRepository<Pessoa> {
     @Inject
     private EntityManager entityManager;
-
     @Inject
-    public PessoaRespository( EntityManager entityManager) {
+    public PessoaRepository(EntityManager entityManager) {
         super(Pessoa.class, entityManager);
     }
 

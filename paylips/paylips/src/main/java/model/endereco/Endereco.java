@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import model.cidade.Cidade;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.io.Serializable;
 
 @Table(name = "ENDERECO")
@@ -16,7 +16,6 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
-@Embeddable
 public class Endereco implements Serializable {
 
     private static final long serialVersionUID = -108425364685861841L;

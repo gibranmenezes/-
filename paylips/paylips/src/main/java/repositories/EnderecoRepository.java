@@ -1,20 +1,19 @@
 package repositories;
 
+import lombok.NoArgsConstructor;
 import model.cidade.Cidade;
 import model.contato.Contato;
 import model.endereco.Endereco;
 import utils.Transacional;
 
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import jakarta.persistence.criteria.*;
+import jakarta.inject.Inject;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.*;
 import java.util.List;
 import java.util.Optional;
 
+@NoArgsConstructor
 public class EnderecoRepository extends GenericRepository<Endereco> {
 
     @Inject

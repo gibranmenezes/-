@@ -29,7 +29,7 @@ import java.util.stream.IntStream;
 public class XlsImportServiceImpl implements IXlsImportService {
 
     private final Logger logger = LogManager.getLogger(XlsImportServiceImpl.class);
-    private final PessoaRespository pessoaRespository;
+    private final PessoaRepository pessoaRepository;
     private final CargoRepository cargoRepository;
     private final ContatoRepository contatoRepository;
     private final CidadeRepository cidadeRepository;
@@ -37,12 +37,12 @@ public class XlsImportServiceImpl implements IXlsImportService {
     private final EnderecoRepository enderecoRepository;
     private final UsuarioRepository usuarioRepository;
 
-    public XlsImportServiceImpl(PessoaRespository pessoaRespository, CargoRepository cargoRepository,
+    public XlsImportServiceImpl(PessoaRepository pessoaRepository, CargoRepository cargoRepository,
                                 ContatoRepository contatoRepository, CidadeRepository cidadeRepository,
                                 PaisRepository paisRepository, EnderecoRepository enderecoRepository,
                                 UsuarioRepository usuarioRepository)
     {
-        this.pessoaRespository = pessoaRespository;
+        this.pessoaRepository = pessoaRepository;
         this.cargoRepository = cargoRepository;
         this.contatoRepository = contatoRepository;
         this.cidadeRepository = cidadeRepository;
@@ -75,7 +75,7 @@ public class XlsImportServiceImpl implements IXlsImportService {
                             pais, usuario, telefone, dataNascimento, cargoId, cargoList);
                 });
         });
-        pessoaRespository.findAll().forEach(System.out::println);
+        //pessoaRespository.findAll().forEach(System.out::println);
 
         return true;
     }
@@ -116,14 +116,13 @@ public class XlsImportServiceImpl implements IXlsImportService {
         } catch (NullPointerException nullPointerException) {
             logger.error("Person has no role");
         }
-        pessoaRespository.save(pessoa);
+        pessoaRepository.save(pessoa);
     }
 
     private List<Cargo> salvaCargoLista(Sheet cargos) {
         List<Cargo> cargoList = new ArrayList<>();
         List<XlsRow> cargoRows = getRows(cargos);
-        cargoRows.stream().skip(1)
-                .filter(row -> !isRowEmpty((Row) row)).forEach(row -> {
+        cargoRows.subList(1, cargoRows.size()).forEach(row -> {
             Cargo cargo = new Cargo();
             cargo.setId(Double.valueOf(row.columns.get(0).toString()).longValue());
             cargo.setNome(row.columns.get(1).toString());

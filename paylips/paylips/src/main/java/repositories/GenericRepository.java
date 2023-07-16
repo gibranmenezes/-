@@ -1,18 +1,20 @@
 package repositories;
 
-import model.contato.Contato;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
+import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
+import jakarta.inject.Inject;
+import lombok.NoArgsConstructor;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+@NoArgsConstructor
 public abstract class GenericRepository<T> {
 
     @Inject
@@ -26,7 +28,7 @@ public abstract class GenericRepository<T> {
         this.entityManager = entityManager;
     }
 
-    protected T salvar(T entityClass){
+   protected T salvar(T entityClass){
         return entityManager.merge(entityClass);
     }
 

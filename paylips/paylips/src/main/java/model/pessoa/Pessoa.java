@@ -1,4 +1,7 @@
 package model.pessoa;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,7 +10,6 @@ import model.contato.Contato;
 import model.endereco.Endereco;
 import model.usuario.Usuario;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 

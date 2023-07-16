@@ -1,13 +1,15 @@
 package repositories;
 
+import lombok.NoArgsConstructor;
 import model.cargo.Cargo;
 import model.pais.Pais;
 import utils.Transacional;
 
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
+import jakarta.inject.Inject;
+import jakarta.persistence.EntityManager;
 import java.util.Optional;
 
+@NoArgsConstructor
 public class CargoRepository extends GenericRepository<Cargo>{
 
     @Inject

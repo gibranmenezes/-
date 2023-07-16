@@ -1,12 +1,14 @@
 package repositories;
 
+import lombok.NoArgsConstructor;
 import model.pais.Pais;
 import utils.Transacional;
 
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
+import jakarta.inject.Inject;
+import jakarta.persistence.EntityManager;
 import java.util.Optional;
 
+@NoArgsConstructor
 public class PaisRepository extends GenericRepository<Pais>{
 
     @Inject
